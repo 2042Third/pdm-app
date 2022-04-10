@@ -19,7 +19,7 @@ class Editors {
       // Multiline
       keyboardType: TextInputType.multiline,
       maxLines: null, 
-      expands: true,
+      expands: true, // enables overflowed text to fold in scrolls
       
       // Behavior
       autocorrect : false,
@@ -29,6 +29,8 @@ class Editors {
       decoration: InputDecoration(
         border: OutlineInputBorder(),
         labelText: 'note title',
+        floatingLabelAlignment: FloatingLabelAlignment.start,
+        alignLabelWithHint: true // aligns the title of the 
       ),
     );
   }
