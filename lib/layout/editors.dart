@@ -30,7 +30,7 @@ class Editors {
         border: OutlineInputBorder(),
         labelText: 'note title',
         floatingLabelAlignment: FloatingLabelAlignment.start,
-        alignLabelWithHint: true // aligns the title of the 
+        alignLabelWithHint: true // aligns the title of the note to the top
       ),
     );
   }
