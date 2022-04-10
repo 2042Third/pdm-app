@@ -24,10 +24,7 @@ class _SideDrawer extends State<SideDrawer>{
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text('Drawer Header'),
+              child: Text('pdm'),
             ),
             ListTile(
               title: const Text('Item 1'),

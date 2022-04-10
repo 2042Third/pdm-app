@@ -17,14 +17,12 @@ class _HomePage extends State<HomePage> {
   GlobalKey<ScaffoldState> _key = GlobalKey();
   Appbar_more_button drawer_button = Appbar_more_button();
   _HomePage (){
-    drawer_button.key = _key;
+    drawer_button.key = _key; // this is used for Appbar button to open the sidebar 
   }
   // app-bar
   AppBar get_appbar() {
     
     return AppBar(
-      // title: const Text('Animation Samples'),
-      // leading: drawer_button.build(),
       leading: drawer_button.build()
     );
   }

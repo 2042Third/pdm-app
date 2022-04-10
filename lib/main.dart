@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import "layout/homepage.dart";
+import "themes/colors.dart";
 void main() {
   runApp(PdmApp());
 }
+
 
 
 class PdmApp extends StatelessWidget {
@@ -14,9 +16,9 @@ class PdmApp extends StatelessWidget {
       title: title,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: Colors.blue,
+          primarySwatch:  generateMaterialColor(Palette.primary),
         ).copyWith(
-          secondary: Colors.green,
+          secondary: generateMaterialColor(Palette.secondary),
         ),
         textTheme: const TextTheme(bodyText2: TextStyle(color: Colors.purple)),
       ),
