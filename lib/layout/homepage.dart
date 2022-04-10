@@ -4,10 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import "buttons.dart";
 import "drawer.dart";
+import "editors.dart";
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
-  
+
   @override
   State<HomePage> createState() => _HomePage();
 }
@@ -16,22 +17,29 @@ class _HomePage extends State<HomePage> {
   int _count = 0;
   GlobalKey<ScaffoldState> _key = GlobalKey();
   Appbar_more_button drawer_button = Appbar_more_button();
-  _HomePage (){
-    drawer_button.key = _key; // this is used for Appbar button to open the sidebar 
+
+  Editors edt = Editors();
+
+  //
+  // Constructor
+  //
+  ///
+  _HomePage() {
+    drawer_button.key =
+        _key; // this is used for Appbar button to open the sidebar
   }
   // app-bar
   AppBar get_appbar() {
-    
-    return AppBar(
-      leading: drawer_button.build()
-    );
+    return AppBar(leading: drawer_button.build());
   }
 
   // body
-  ListView get_body_views(headerStyle) {
+  Widget get_body_views(headerStyle) {
+    return edt.textEdit();
+    
     return ListView(
       children: [
-        ListTile(title: Text('Basics', style: headerStyle)),
+        // ListTile(title: Text('Basics', style: headerStyle)),
       ],
     );
   }
@@ -49,7 +57,6 @@ class _HomePage extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    
     final TextStyle? headerStyle = Theme.of(context).textTheme.headline6;
     return get_home(headerStyle);
   }
