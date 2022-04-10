@@ -36,15 +36,10 @@ class Editors {
   Widget textEdit() {
     return Center(
         child:
-            // Column(
-              // mainAxisAlignment: MainAxisAlignment.center, 
-              // children: [
-                Container(
-                  padding: EdgeInsets.all(50.0) ,
-                  child: textField2()
-                )
-              // ]
-            // )
+            Container(
+              padding: EdgeInsets.all(50.0) ,
+              child: textField2()
+            )
           );
   }
 }
