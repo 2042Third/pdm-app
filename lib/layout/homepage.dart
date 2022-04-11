@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import "buttons.dart";
 import "drawer.dart";
 import "editors.dart";
+import "../ops/cppop.dart";
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -37,15 +38,18 @@ class _HomePage extends State<HomePage> {
   Widget get_body_views(headerStyle) {
     return edt.textEdit();
     
-    return ListView(
-      children: [
-        // ListTile(title: Text('Basics', style: headerStyle)),
-      ],
-    );
+    // return ListView(
+    //   children: [
+    //     // ListTile(title: Text('Basics', style: headerStyle)),
+    //   ],
+    // );
   }
 
   // container for the whole home page
   Scaffold get_home(TextStyle? headerStyle) {
+    // testing c++ calling
+    CppOp trial=CppOp();
+
     return Scaffold(
       key: _key,
       appBar: get_appbar(),

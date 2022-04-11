@@ -3,11 +3,48 @@
 #include <optional>
 
 #include "flutter/generated_plugin_registrant.h"
+// modified for pdm encryption
 
 FlutterWindow::FlutterWindow(const flutter::DartProject& project)
     : project_(project) {}
 
 FlutterWindow::~FlutterWindow() {}
+
+// modified for pdm encryption
+#include <flutter/binary_messenger.h>
+#include <flutter/standard_method_codec.h>
+#include <flutter/method_channel.h>
+#include <flutter/method_result_functions.h>
+#include <flutter/encodable_value.h>
+
+// end modification for pdm encryption
+void initMethodChannel(flutter::FlutterEngine *flutter_instance)
+{
+
+  const static std::string channel_name("test_channel");
+
+  auto channel =
+      std::make_unique<flutter::MethodChannel<>>(
+          flutter_instance->messenger(), channel_name,
+          &flutter::StandardMethodCodec::GetInstance());
+
+  channel->SetMethodCallHandler(
+      [](const flutter::MethodCall<> &call, std::unique_ptr<flutter::MethodResult<>> result)
+      {
+        if (call.method_name().compare("test") == 0)
+        {
+          // start doing pdm stuff
+          char* passing_result = "pass result here";
+          //  encoded_result;
+          result->Success("pass result here");
+        }
+        else
+        {
+          result->NotImplemented();
+        }
+      });
+}
+// end modification for pdm encryption
 
 bool FlutterWindow::OnCreate() {
   if (!Win32Window::OnCreate()) {
@@ -24,6 +61,10 @@ bool FlutterWindow::OnCreate() {
   if (!flutter_controller_->engine() || !flutter_controller_->view()) {
     return false;
   }
+  // pdm modification
+  // initialize method channel here
+  initMethodChannel(flutter_controller_->engine());
+  // end pdm modification
   RegisterPlugins(flutter_controller_->engine());
   SetChildContent(flutter_controller_->view()->GetNativeWindow());
   return true;
